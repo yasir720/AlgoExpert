@@ -1,2 +1,2 @@
 # AlgoExpert
- Doing some algos to sharpen my skills
+ Trying to get a couple algos done a day to keep learning
