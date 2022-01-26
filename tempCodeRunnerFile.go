@@ -1,7 +1,2 @@
-
-// func CaesarCipherEncryptor(str string, key int) string {
-// 	// Write your code here.
-// 	runes := []rune(str)
-// 	alphabet := "abcdefghijklmnopqrstuvwxyx"
-// 	return ""
-// }
+	encodedStringCharacters = append(encodedStringCharacters, strconv.Itoa(charRunLength)[0])
+	encodedStringCharacters = append(encodedStringCharacters, previousChar)
