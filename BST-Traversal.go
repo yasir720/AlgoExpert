@@ -33,7 +33,7 @@ func (tree *BST) PreOrderTraverse(array []int) []int {
 		array = tree.Left.PreOrderTraverse(array)
 	}
 	if tree.Right != nil {
-		array = tree.Right.InOrderTraverse(array)
+		array = tree.Right.PreOrderTraverse(array)
 	}
 	return array
 }
@@ -44,10 +44,10 @@ func (tree *BST) PostOrderTraverse(array []int) []int {
 	// Write your code here.
 	
 	if tree.Left != nil {
-		array = tree.Left.PreOrderTraverse(array)
+		array = tree.Left.PostOrderTraverse(array)
 	}
 	if tree.Right != nil {
-		array = tree.Right.InOrderTraverse(array)
+		array = tree.Right.PostOrderTraverse(array)
 	}
 	array = append(array, tree.Value)
 	return array
