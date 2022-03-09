@@ -1,13 +1,13 @@
 package main
 
 // This is the struct of the input root. Do not edit it.
-// O(n) time | O(n) space -- n is the # of node in the tree
 type BinaryTree struct {
 	Value int
 	Left  *BinaryTree
 	Right *BinaryTree
 }
 
+// O(n) time | O(n) space -- n is the # of node in the tree
 func BranchSums(root *BinaryTree) []int {
 	// Write your code here.
 	sums := []int{}
