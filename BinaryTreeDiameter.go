@@ -13,6 +13,7 @@ type TreeInfo struct {
 	height int
 }
 
+// O(n) time | O(h) space
 func BinaryTreeDiameter(tree *BinaryTree) int {
 	// Write your code here.
 	return getTreeInfo(tree).diameter
