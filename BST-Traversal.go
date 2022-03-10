@@ -16,8 +16,10 @@ func (tree *BST) InOrderTraverse(array []int) []int {
 	if tree.Left != nil { // go all the way to the left
 		array = tree.Left.InOrderTraverse(array)
 	}
+
 	array = append(array, tree.Value) // we're only appending here
-	if tree.Right != nil {
+
+	if tree.Right != nil { // now we check on the right side 
 		array = tree.Right.InOrderTraverse(array)
 	}
 	return array
