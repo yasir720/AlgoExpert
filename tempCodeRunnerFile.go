@@ -1,2 +1,11 @@
-	encodedStringCharacters = append(encodedStringCharacters, strconv.Itoa(charRunLength)[0])
-	encodedStringCharacters = append(encodedStringCharacters, previousChar)
+func BalancedBrackets(s string) bool {
+// 	// Write your code here.
+	
+// 	for idx, bracket := range s {
+
+// 	}
+// 	return false
+// }
+
+
+
