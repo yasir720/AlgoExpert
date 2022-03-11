@@ -23,7 +23,8 @@ func MinimumWaitingTime(queries []int) int {
 		return totalWaitTime
 	}
 
-	sort.Ints(queries)
+	sort.Ints(queries) // this gives us a minimum since longer wait times will
+					   // be endured for less iterations 
 
 	for idx, duration := range queries {
 		queriesLeft := len(queries) - (idx + 1)
