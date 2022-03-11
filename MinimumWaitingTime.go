@@ -14,23 +14,22 @@ func generateSlice(size int) []int {
 	return slice
 }
 
+// O(nlogn) time | O(1) space
 func MinimumWaitingTime(queries []int) int {
 	// Write your code here.
-	waitTime := 0
+	totalWaitTime := 0
+
 	if len(queries) == 1 {
-		return waitTime
+		return totalWaitTime
 	}
 
 	sort.Ints(queries)
 
-	first := queries[len(queries)-1:]
-	rest := queries[:len(queries)-1]
-	full := append(first, rest...)
-
-	for i := 1; i < len(full) -1; i++ {
-		waitTime += full[i]
+	for idx, duration := range queries {
+		queriesLeft := len(queries) - (idx + 1)
+		totalWaitTime = totalWaitTime + (duration * queriesLeft)
 	}
-	return waitTime
+	return totalWaitTime
 }
 
 func main() {
