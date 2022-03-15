@@ -89,7 +89,7 @@ func BalancedBrackets(s string) bool {
 }
 
 func main() {
-	var stack Stack // create a stack variable of type Stack
+	//var stack Stack // create a stack variable of type Stack
 	test := "{([()])}"
 	fmt.Println(test)
 	
