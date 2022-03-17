@@ -14,8 +14,9 @@ func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
 		for nextNewNode != nil && nextNewNode.Value == currentNode.Value {
 			nextNewNode = nextNewNode.Next
 		}
-		currentNode.Next = nextNewNode
-		currentNode = nextNewNode
+		currentNode.Next = nextNewNode // this line "fixes" the linked list
+		currentNode = nextNewNode // this line moves us over to the next node
+														  // in the linked list
 	}
 		
 	return linkedList
