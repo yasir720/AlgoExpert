@@ -1,4 +1,4 @@
-package main
+package SumOfLinkedLists
 
 // This is an input struct. Do not edit.
 type LinkedList struct {
