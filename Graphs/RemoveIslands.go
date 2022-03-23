@@ -94,11 +94,11 @@ func getNeighbors(matrix [][]int, row, col int)	[][]int {
 	}
 
 	if col-1 >= 0 { // to the left
-		neighbors = append(neighbors, []int{col - 1, col})
+		neighbors = append(neighbors, []int{row, col - 1})
 	}
 
 	if col+1 < numCols { // to the right
-		neighbors = append(neighbors, []int{col + 1, col})
+		neighbors = append(neighbors, []int{row, col + 1})
 	}
 	return neighbors
 }
