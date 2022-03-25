@@ -17,6 +17,10 @@ func SumOfLinkedLists(linkedListOne *LinkedList, linkedListTwo *LinkedList) *Lin
 	nodeOne := linkedListOne
 	nodeTwo := linkedListTwo
 
+	// carry is apart of this condition as there are cases where we still have to sum
+	// values even when there is no more values in either linked list.
+	// such a case is the sum of 9->9->9 & 9->9 where the result is
+	// 8->9->0->1 which is longer than either given linked list
 	for nodeOne != nil || nodeTwo != nil || carry != 0 {
 		var valueOne int
 		var valueTwo int
