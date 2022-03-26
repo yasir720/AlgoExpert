@@ -1,8 +1,23 @@
 package main
 
+// O(n) time | O(n) space
 func MinHeightBST(array []int) *BST {
 	// Write your code here.
-	return nil
+
+	return constructMinHeightBST(array, 0, len(array)-1)
+}
+
+func constructMinHeightBST(array []int, startIdx, endIdx int) *BST {
+	if startIdx > endIdx {
+		return nil
+	}
+
+	midIdx := (startIdx + endIdx) / 2
+	bst := &BST{Value: array[midIdx]}
+	bst.Left = constructMinHeightBST(array, startIdx, endIdx-1)
+	bst.Right = constructMinHeightBST(array, midIdx+1, endIdx)
+
+	return bst
 }
 
 type BST struct {
