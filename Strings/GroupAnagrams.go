@@ -1,25 +1,28 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "sort"
 
-// func GroupAnagrams(words []string) [][]string {
-// 	// Write your code here.
-// 	return nil
-// }
+func GroupAnagrams(words []string) [][]string {
+	// Write your code here.
+	anagrams := map[string][]string{}
 
-func main() {
-	poop := map[string][]string{}
-	poop["test"] = append(poop["test"], "hey")
-	poop["test"] = append(poop["test"], "there")
+	for _, word := range words {
+		sortedWord := sortWord(word)
+		anagrams[sortedWord] = append(anagrams[sortedWord], word)
+	}
 
+	result := [][]string{}
 
-	people := []string{"a", "c", "b"}
-	fmt.Println(people)
-	sort.Slice(people, func(i, j int) bool {
-		return people[i] > people[j]
+	for _, group := range anagrams {
+		result = append(result, group)
+	}
+	return result
+}
+
+func sortWord(word string) string {
+	wordBytes := []byte(word)
+	sort.Slice(wordBytes, func(i, j int) bool {
+		return wordBytes[i] < wordBytes[j]
 	})
-	fmt.Println(people)
+	return string(wordBytes)
 }
