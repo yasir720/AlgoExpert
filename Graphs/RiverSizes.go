@@ -1,33 +1,29 @@
 package main
 
 // O(wh) time | O(wh) space
-func RemoveIslands(matrix [][]int) [][]int {
+func RiverSizes(matrix [][]int) []int {
 	// Write your code here.
 
-	// we create a new matrix which will let us know where boarder islands are.
+	// we create a new matrix which will allow us to keep track of the elements
+	// that we have already visited.
 	// use of a 2D slice is made where all entries are zero-valued to false
-	onesConnectedToBoarder := make([][]bool, len(matrix))
+	riversAlreadyVisited := make([][]bool, len(matrix))
+
 	for i := range matrix {
-		onesConnectedToBoarder[i] = make([]bool, len(matrix[0]))
+		riversAlreadyVisited[i] = make([]bool, len(matrix[0]))
 	}
 
+	// this bit is used to circle the perimiter and search for islands along the boarder
 	for row := 0; row < len(matrix); row++ {
 		for col := 0; col < len(matrix[row]); col++ {
-			// define all members that are apart of the boarder
-			rowIsBoarder := row == 0 || row == len(matrix)-1
-			colIsBoarder := col == 0 || col == len(matrix[row])-1
-			isBoader := rowIsBoarder || colIsBoarder
 
-			if !isBoader { // skip non-boarder members
+			if matrix[row][col] == 0 {
 				continue
 			}
 
-			if matrix[row][col] != 1 { // skip members that are not possible islands
-				continue
-			}
-
+			//this bit will help us find the 1s connected to border 1s
 			findOnesConnectedToBoarder(
-				matrix, row, col, onesConnectedToBoarder)
+				matrix, row, col, riversAlreadyVisited)
 		}
 	}
 
@@ -48,15 +44,6 @@ func RemoveIslands(matrix [][]int) [][]int {
 
 
 
-func RiverSizes(matrix [][]int) []int {
-	// Write your code here.
-	return nil
-}
-
-
-
-
-
 
 
 
@@ -72,8 +59,7 @@ func RiverSizes(matrix [][]int) []int {
 
 // this recurrsive function checks to see if any boardering 1's are connected to
 // any other 1's to form islands
-func findOnesConnectedToBoarder(
-	matrix[][]int, startRow, startCol int, onesConnectedToBoarder[][]bool) {
+func findOnesConnectedToBoarder(matrix[][]int, startRow, startCol int, onesConnectedToBoarder [][]bool) {
 		stack := [][]int{{startRow, startCol}}
 		var currentPosition []int
 
