@@ -3,96 +3,66 @@ package main
 // O(wh) time | O(wh) space
 func RiverSizes(matrix [][]int) []int {
 	// Write your code here.
+	sizes := []int{}
+	
+	visited := make([][]bool, len(matrix))
 
-	// we create a new matrix which will allow us to keep track of the elements
-	// that we have already visited.
-	// use of a 2D slice is made where all entries are zero-valued to false
-	riversAlreadyVisited := make([][]bool, len(matrix))
-
-	for i := range matrix {
-		riversAlreadyVisited[i] = make([]bool, len(matrix[0]))
+	for i := range visited {
+		visited[i] = make([]bool, len(matrix[i]))
 	}
 
-	// this bit is used to circle the perimiter and search for islands along the boarder
+
+
 	for row := 0; row < len(matrix); row++ {
 		for col := 0; col < len(matrix[row]); col++ {
 
-			if matrix[row][col] == 0 {
+			if visited[row][col] {
 				continue
 			}
+			
+			sizes = traverseNode(row, col, matrix, visited, sizes)
+		}
+	}
+	return sizes
+}
 
-			//this bit will help us find the 1s connected to border 1s
-			findOnesConnectedToBoarder(
-				matrix, row, col, riversAlreadyVisited)
+func traverseNode(row, col int, matrix [][]int, visited [][]bool, sizes []int) []int {
+	currentRiverSize := 0
+	nodesToExplore := [][]int{{row, col}}
+
+	for len(nodesToExplore) > 0 {
+		currentNode := nodesToExplore[0]
+		nodesToExplore = nodesToExplore[1:]
+		row, col := currentNode[0], currentNode[1]
+
+		if visited[row][col] {
+			continue
+		}
+
+		visited[row][col] = true
+		if matrix[row][col] == 0 {
+			continue
+		}
+
+		currentRiverSize += 1
+		unvisitedNeighbors := getNeighbors(matrix, row, col, visited)
+
+		for _, neighbor := range unvisitedNeighbors {
+			nodesToExplore = append(nodesToExplore, neighbor)
 		}
 	}
 
-	for row := 0; row < len(matrix)-1; row++ {
-		for col := 0; col < len(matrix[row])-1; col++ {
-			if onesConnectedToBoarder[row][col] {
-				continue
-			}
-
-			matrix[row][col] = 0
-		}
+	if currentRiverSize > 0 {
+		sizes = append(sizes, currentRiverSize)
 	}
-	return matrix
+
+	return sizes
 }
 
 
+func getNeighbors(matrix [][]int, row, col int, visited [][]bool)	[][]int {
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// this recurrsive function checks to see if any boardering 1's are connected to
-// any other 1's to form islands
-func findOnesConnectedToBoarder(matrix[][]int, startRow, startCol int, onesConnectedToBoarder [][]bool) {
-		stack := [][]int{{startRow, startCol}}
-		var currentPosition []int
-
-		for len(stack) > 0 {
-			// position changed to top of stack and stack is popped
-			currentPosition, stack = stack[len(stack)-1], stack[:len(stack)-1]
-			currentRow, currentCol := currentPosition[0], currentPosition[1]
-
-			alreadyVisited := onesConnectedToBoarder[currentRow][currentCol]
-
-			if alreadyVisited {
-				continue
-			}
-
-			onesConnectedToBoarder[currentRow][currentCol] = true
-
-			neighbors := getNeighbors(matrix, currentRow, currentCol)
-
-			for _, neighbor := range neighbors {
-				row, col := neighbor[0], neighbor[1]
-
-				if matrix[row][col] != 1 {
-					continue
-				}
-
-				stack = append(stack, neighbor)
-			}
-		}
-}
-
-// returns a 2D matrix with the location of the neighbors to a given member
-// in a matrix.
-func getNeighbors(matrix [][]int, row, col int)	[][]int {
 	neighbors := make([][]int, 0)
 	numRows := len(matrix)
 	numCols := len(matrix[row])
