@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 type Stack []rune
 
 // IsEmpty: check if stack is empty
@@ -27,11 +23,6 @@ func (s *Stack) Pop() (rune, bool) {
 		return element, true
 	}
 }
-
-
-
-
-
 
 func isOdd(n string) bool {
 	length := len(n)
@@ -86,27 +77,4 @@ func BalancedBrackets(s string) bool {
 		return true
 	}
 	return false
-}
-
-func main() {
-	//var stack Stack // create a stack variable of type Stack
-	test := "{([()])}"
-	fmt.Println(test)
-	
-	fmt.Printf("test = %T\n", test)
-
-	bracket := test[1]
-	fmt.Printf("bracket = %T\n", bracket)
-	fmt.Println(bracket)
-	if isOpening(bracket) {
-		println("gg")
-	}
-	fmt.Println(string(bracket))
-
-	//fmt.Println(isBalanced("{}"))	
-
-
-
-	// poop := "({{[]}})"
-	// fmt.Println(isMatch(poop[2], poop[4]))
 }
