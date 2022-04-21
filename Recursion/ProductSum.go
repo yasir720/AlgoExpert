@@ -23,5 +23,7 @@ func helper(array SpecialArray, multiplier int) int {
 }
 
 func main() {
+	t := "hey there"
+	cast, ok := t.(SpecialArray)
 
 }

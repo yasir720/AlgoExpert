@@ -20,6 +20,6 @@ func GetNthFib(n int) int {
 }
 
 func main() {
-	result := GetNthFib(1)
+	result := GetNthFib(6)
 	fmt.Println(result)
 }
