@@ -1,12 +1,12 @@
 // Feel free to add methods and fields to the struct definitions.
 package main
 
-type Node struct {
+type Node struct { // here we create the structure for the node
 	Value      int
 	Prev, Next *Node
 }
 
-type DoublyLinkedList struct {
+type DoublyLinkedList struct { // we create the doubly linked list now
 	Head, Tail *Node
 }
 

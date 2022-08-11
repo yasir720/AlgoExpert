@@ -11,6 +11,7 @@ func SumOfLinkedLists(linkedListOne *LinkedList, linkedListTwo *LinkedList) *Lin
 	// Write your code here.
 	newLinkedList := &LinkedList{Value: 0} // this acts as a dummy node which points to the
 										   // head of the answer linked list
+										   // look at the return statment
 	currentNode := newLinkedList
 	carry := 0
 

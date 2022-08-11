@@ -10,7 +10,7 @@ func RemoveKthNodeFromEnd(head *LinkedList, k int) {
 	// Write your code here.
 	first, second, counter := head, head, 1
 
-	// we move our second pointer k elements ahead of the first pointer
+	// we move our second pointer k elements AHEAD of the first pointer
 	for counter <= k {
 		second = second.Next
 		counter = counter + 1
@@ -25,7 +25,7 @@ func RemoveKthNodeFromEnd(head *LinkedList, k int) {
 		return
 	}
 
-	// all that is left to do now is to move the two ppinters by one untill
+	// all that is left to do now is to move the two ppinters one by one untill
 	// second is at the end. we then remove first as it is pointing to the
 	// node to be removed
 	for second.Next != nil {

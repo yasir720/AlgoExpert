@@ -12,11 +12,10 @@ func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
 	for currentNode != nil {
 		nextNewNode := currentNode.Next
 		for nextNewNode != nil && nextNewNode.Value == currentNode.Value {
-			nextNewNode = nextNewNode.Next
+			nextNewNode = nextNewNode.Next // move the new next node one node over
 		}
-		currentNode.Next = nextNewNode // this line "fixes" the linked list
-		currentNode = nextNewNode // this line moves us over to the next node
-														  // in the linked list
+		currentNode.Next = nextNewNode // if there was a duplicate, we skip that node. 
+		currentNode = nextNewNode // we now move the current node into the right position
 	}
 		
 	return linkedList
