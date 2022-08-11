@@ -5,10 +5,11 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
+// O(n) time | O(1) space
 func FindLoop(head *LinkedList) *LinkedList {
 	// Write your code here.
 	first := head.Next
-	second := first
+	second := first.Next
 
 	for first != second {
 		first = first.Next // moves 1 node per iteration
