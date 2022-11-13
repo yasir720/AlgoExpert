@@ -27,7 +27,7 @@ func MergeLinkedLists(headOne *LinkedList, headTwo *LinkedList) *LinkedList {
 		}
 	}
 
-	if p1 == nil {
+	if p1 == nil { // this takes care of the case where the first LL is shoter
 		p1Prev.Next = p2
 	}
 

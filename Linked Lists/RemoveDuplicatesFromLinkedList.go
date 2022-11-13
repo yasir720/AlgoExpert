@@ -6,6 +6,7 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
+// O(n) time | O(1) space
 func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
 	// Write your code here.
 	currentNode := linkedList
@@ -20,3 +21,19 @@ func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
 		
 	return linkedList
 }
+
+// easier way to go about it
+// O(n) time | O(1) space
+// func RemoveDuplicatesFromLinkedList(linkedList *LinkedList) *LinkedList {
+// 	// Write your code here.
+// 	currentNode := linkedList
+// 	for currentNode.Next != nil {
+// 		if currentNode.Value == currentNode.Next.Value {
+// 			currentNode.Next = currentNode.Next.Next
+// 		} else {
+// 			currentNode = currentNode.Next
+// 		}
+// 	}
+		
+// 	return linkedList
+// }

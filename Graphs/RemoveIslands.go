@@ -46,40 +46,40 @@ func RemoveIslands(matrix [][]int) [][]int {
 // this recurrsive function checks to see if any boardering 1's are connected to
 // any other 1's to form islands
 func findOnesConnectedToBoarder(
-	matrix[][]int, startRow, startCol int, onesConnectedToBoarder[][]bool) {
-		stack := [][]int{{startRow, startCol}}
-		var currentPosition []int
+	matrix [][]int, startRow, startCol int, onesConnectedToBoarder [][]bool) {
+	stack := [][]int{{startRow, startCol}}
+	var currentPosition []int
 
-		for len(stack) > 0 {
-			// position changed to top of stack and stack is popped
-			currentPosition, stack = stack[len(stack)-1], stack[:len(stack)-1]
-			currentRow, currentCol := currentPosition[0], currentPosition[1]
+	for len(stack) > 0 {
+		// position changed to top of stack and stack is popped
+		currentPosition, stack = stack[len(stack)-1], stack[:len(stack)-1]
+		currentRow, currentCol := currentPosition[0], currentPosition[1]
 
-			alreadyVisited := onesConnectedToBoarder[currentRow][currentCol]
+		alreadyVisited := onesConnectedToBoarder[currentRow][currentCol]
 
-			if alreadyVisited {
+		if alreadyVisited {
+			continue
+		}
+
+		onesConnectedToBoarder[currentRow][currentCol] = true
+
+		neighbors := getNeighbors(matrix, currentRow, currentCol)
+
+		for _, neighbor := range neighbors {
+			row, col := neighbor[0], neighbor[1]
+
+			if matrix[row][col] != 1 {
 				continue
 			}
 
-			onesConnectedToBoarder[currentRow][currentCol] = true
-
-			neighbors := getNeighbors(matrix, currentRow, currentCol)
-
-			for _, neighbor := range neighbors {
-				row, col := neighbor[0], neighbor[1]
-
-				if matrix[row][col] != 1 {
-					continue
-				}
-
-				stack = append(stack, neighbor)
-			}
+			stack = append(stack, neighbor)
 		}
+	}
 }
 
 // returns a 2D matrix with the location of the neighbors to a given member
 // in a matrix.
-func getNeighbors(matrix [][]int, row, col int)	[][]int {
+func getNeighbors(matrix [][]int, row, col int) [][]int {
 	neighbors := make([][]int, 0)
 	numRows := len(matrix)
 	numCols := len(matrix[row])

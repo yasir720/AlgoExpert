@@ -9,28 +9,26 @@ func main() {
 
 	// fmt.Println(i * j)
 
-	i := 100
-	j := 200
+	// i := 100
+	// j := 200
 
-	fmt.Println(i)
-	fmt.Println(j)
-	fmt.Println(&j)
+	// triplets := [][]int{}
+
+	// fmt.Println(i)
+	// fmt.Println(j)
+	// fmt.Println(&j)
+
+	// fmt.Println(triplets)
+
+	// fmt.Println(true || false)
+	b := []int{1,2,3,4}
+	c := []int{5,6,7,8}
+	a := [][]int{{1,2,3,4},{5,6,7,8}}
+	d := [][]int{{6,7}}
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println(d)
+
 
 }
-
-// func TwoNumberSum(array []int, target int) []int {
-// 	// Write your code here.
-// 	sort.Ints(array)
-// 	left, right := 0, len(array)-1
-// 	for left < right {
-// 		currentSum := array[left] + array[right]
-// 		if currentSum == target {
-// 			return []int{array[left], array[right]}
-// 		} else if currentSum > target {
-// 			right--
-// 		} else {
-// 			left++
-// 		}
-// 	}
-// 	return []int{}
-// }
