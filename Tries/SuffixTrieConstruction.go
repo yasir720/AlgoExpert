@@ -16,7 +16,7 @@ func NewSuffixTrie() SuffixTrie {
 func (trie SuffixTrie) PopulateSuffixTrieFrom(str string) {
 	// Write your code here.
 	for i := range str {
-		node := trie // look at type struct
+		node := trie // look at type struct -- this points node at the root of the inout struct
 		for j := i; j <len(str); j++ {
 			letter := str[j]
 			if _, found := node[letter]; !found { // check if in map then base on conditional (found)
@@ -31,7 +31,7 @@ func (trie SuffixTrie) PopulateSuffixTrieFrom(str string) {
 // O(m) time | O(1) space
 func (trie SuffixTrie) Contains(str string) bool {
 	// Write your code here.
-	node := trie // look at type struct
+	node := trie // look at type struct -- this points node at the root of the inout struct
 	for i := 0; i < len(str); i++ {
 		letter := str[i]
 		if _, found := node[letter]; !found { // check if in map then base on conditional (found)
