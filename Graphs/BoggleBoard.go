@@ -3,10 +3,48 @@ package main
 // O(nm*8^s + ws) time | O(nm + ws) space
 func BoggleBoard(board [][]rune, words []string) []string {
 	// Write your code here.
-	return nil
+	trie := Trie{children: map[rune]Trie{}}
+	for _, word := range words {
+		trie.add(word)
+	}
+
+	visited := make([][]bool, len(board))
+	for i := range visited {
+		visited[i] = make([]bool, len(board[i]))
+	}
+
+	finalWords := map[string]bool{}
+	for i := range board {
+		for j := range board[i] {
+			explore(i, j, board, trie, visited, finalWords)
+		}
+	}
+
+	result := []string{}
+	for word := range finalWords {
+		result = append(result, word)
+	}
+	return result
 }
 
 func explore(i, j int, board [][]rune, trie Trie, visited [][]bool, finalWords map[string]bool) {
+	if visited[i][j] {
+		return	
+	}
+	letter := board[i][j]
+	if _, found := trie.children[letter]; !found {
+		return
+	}
+	visited[i][j] = true
+	trie = trie.children[letter]
+	if end, found := trie.children['*']; found {
+		finalWords[end.word] = true
+	}
+	neighbors := getNeighbors(i, j, board)
+	for _, neighbor := range neighbors {
+		explore(neighbor[0], neighbor[1], board, trie, visited, finalWords)
+	}
+	visited[i][j] = false
 
 }
 
