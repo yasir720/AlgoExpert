@@ -8,5 +8,10 @@ func main() {
 	stack = stack[:len(stack)-1]
 	fmt.Println(stack)
 
+	// print versions
+	fmt.Print()
+	fmt.Printf()
+	fmt.Println()
+
 
 }
