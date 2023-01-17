@@ -1,6 +1,6 @@
 package main
 
-// O(n) time | O(1) space
+// O(n) time | O(1) space - where n is the length of the input array
 func FirstDuplicateValue(array []int) int {
 	// Write your code here.
 	for _, value := range array {
