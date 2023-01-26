@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// using iterative appraoch
 // O(n) time | O(1) space
 func GetNthFib(n int) int {
 	// Write your code here.
@@ -19,7 +20,15 @@ func GetNthFib(n int) int {
 	return lastTwo[1]
 }
 
-func main() {
-	result := GetNthFib(6)
-	fmt.Println(result)
-}
+// using recusive appraoch
+// O(n^2) time | O(1) space
+// func GetNthFib(n int) int {
+// 	// Write your code here.
+// 	if n == 2 {
+// 		return 1
+// 	} else if n == 1 {
+// 		return 0
+// 	}
+
+// 	return GetNthFib(n-1) + GetNthFib(n-2)
+// }

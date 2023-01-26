@@ -16,6 +16,8 @@ func AbsDiff(a, b int) int {
 	return b - a
 }
 
+// Average: O(log(n)) time | O(1) space - where n is the number of nodes in the BST
+// Worst: O(n) time | O(1) space - where n is the number of nodes in the BST
 func (tree *BST) FindClosestValueHelper(target, closest int) int {
 	currentNode := tree
 
