@@ -67,11 +67,11 @@ func (tree *BST) Remove(value int) *BST {
 	// Write your code here.
 	// Do not edit the return statement of this method.
 
-	tree.remove(value, nil)
+	tree.RemoveHelper(value, nil)
 	return tree
 }
 
-func (tree *BST) remove(value int, parent *BST) {
+func (tree *BST) RemoveHelper(value int, parent *BST) {
 	currentNode := tree
 	for currentNode != nil {
 		if value < currentNode.Value {
@@ -88,7 +88,7 @@ func (tree *BST) remove(value int, parent *BST) {
 				// set hte value of the current node to the min of the right subtree
 				currentNode.Value = currentNode.Right.getMinValue()
 				// now remove min node of the right subtree
-				currentNode.Right.remove(currentNode.Value, currentNode)
+				currentNode.Right.RemoveHelper(currentNode.Value, currentNode)
 			} else if parent == nil { // case 2 where we are removing the root node
 				if currentNode.Left != nil {
 					currentNode.Value = currentNode.Left.Value
