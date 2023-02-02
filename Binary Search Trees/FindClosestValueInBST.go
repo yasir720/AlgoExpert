@@ -14,8 +14,6 @@ func (tree *BST) FindClosestValue(target int) int {
 	return tree.FindClosestValueHelper(target, tree.Value)
 }
 
-// Average: O(log(n)) time | O(1) space - where n is the number of nodes in the BST
-// Worst: O(n) time | O(1) space - where n is the number of nodes in the BST
 func (tree *BST) FindClosestValueHelper(target, closest int) int {
 	currentNode := tree // we first start at the root
 	closestValue := tree.Value

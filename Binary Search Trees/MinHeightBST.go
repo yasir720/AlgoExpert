@@ -1,5 +1,12 @@
 package main
 
+type BST struct {
+	Value int
+
+	Left  *BST
+	Right *BST
+}
+
 // O(n) time | O(n) space
 func MinHeightBST(array []int) *BST {
 	// Write your code here.
@@ -18,13 +25,6 @@ func constructMinHeightBST(array []int, startIdx, endIdx int) *BST {
 	bst.Right = constructMinHeightBST(array, midIdx+1, endIdx)
 
 	return bst
-}
-
-type BST struct {
-	Value int
-
-	Left  *BST
-	Right *BST
 }
 
 func (tree *BST) Insert(value int) *BST {
