@@ -8,6 +8,7 @@ type BST struct {
 	Right *BST
 }
 
+// O(d) time | O(1) space - where d is the distance between nodeOne and nodeThree
 func ValidateThreeNodes(nodeOne *BST, nodeTwo *BST, nodeThree *BST) bool {
 	// Write your code here.
 	if isDescendant(nodeTwo, nodeOne) {
@@ -20,6 +21,7 @@ func ValidateThreeNodes(nodeOne *BST, nodeTwo *BST, nodeThree *BST) bool {
 	return false
 }
 
+// checks if target is a descendant of node
 func isDescendant(node, target *BST) bool {
 	currentNode := node
 	for currentNode != nil && currentNode != target {
