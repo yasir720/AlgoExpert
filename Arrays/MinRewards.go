@@ -9,9 +9,9 @@ func MinRewards(scores []int) int {
 
 	for i := 1; i < len(scores); i++ {
 		if scores[i] > scores[i-1] {
-			totalRewards += ++prepreviousReward
-			lastMax = i
-			lastlastMaxReward = prepreviousReward
+			totalRewards += totalRewards + previousReward + 1
+			lastMaxIdx = i
+			lastMaxReward = previousReward
 		} else {
 			if previousReward == 1 {
 				totalRewards += i -lastMaxIdx

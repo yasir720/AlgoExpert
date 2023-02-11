@@ -21,3 +21,21 @@ func TwoNumberSum(array []int, target int) []int {
 	}
 	return []int{} // return empty if we don't find a possible sum in the input array
 }
+
+// faster version using a hashmap
+// O(n) time | O(n) space
+// func TwoNumberSum(array []int, target int) []int {
+// 	// Write your code here.
+// 	m := make(map[int]bool)
+
+// 	for _, number := range array {
+// 		neededNumber := target - number
+// 		_, hasNeededNumber := m[neededNumber]
+// 		if hasNeededNumber {
+// 			return []int{neededNumber, number}
+// 		} else {
+// 			m[number] = true
+// 		}
+// 	}
+// 	return []int{}
+// }
