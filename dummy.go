@@ -1,20 +1,20 @@
 package main
 
-import "fmt"
+func IsMonotonic(array []int) bool {
+	// Write your code here.
+	if len(array) < 2 {
+		return true
+	}
 
-func main() {
-	// stack := []int{0, 1, 2, 3, 4, 5, 6}
-	// fmt.Println(stack[len(stack)-1])
-	// stack = stack[:len(stack)-1]
-	// fmt.Println(stack)
+	isNonincreasing := true
+	isNonDecreasing := true
 
-	// // print versions
-	// fmt.Print()
-	// fmt.Printf()
-	// fmt.Println()
-
-
-	fmt.Println(3/2)
-
-
+	for i := 1; i < len(array); i++ {
+		if array[i] > array[i-1] {
+			isNonDecreasing = false
+		} else if array[i] < array[i-1] {
+			isNonincreasing = false
+		}
+	}
+	return isNonincreasing || isNonDecreasing
 }
