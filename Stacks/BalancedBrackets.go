@@ -3,19 +3,19 @@ package main
 var opening = map[rune]bool{
 	'(': true,
 	'[': true,
-	'{': true
+	'{': true,
 }
 
 var closing = map[rune]bool{
 	')': true,
 	']': true,
-	'}': true
+	'}': true,
 }
 
 var matching = map[rune]rune{
 	')': '(',
 	']': '[',
-	'}': '{'
+	'}': '{',
 }
 
 // O(n) time | O(n) space - where n is the length of the input string
@@ -40,40 +40,6 @@ func BalancedBrackets(s string) bool {
 	}
 	return len(stack) == 0
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // package main
 
@@ -126,7 +92,7 @@ func BalancedBrackets(s string) bool {
 // 	} else if string(a) == "{" && string(b) == "}" {
 // 		return true
 // 	}
-	
+
 // 	return false
 // }
 
@@ -137,7 +103,7 @@ func BalancedBrackets(s string) bool {
 // 	if isOdd(s) {
 // 		return false
 // 	}
-	
+
 // 	for _, bracket := range s {
 // 		if isOpening(byte(bracket)) {
 // 			stack.Push(bracket)
