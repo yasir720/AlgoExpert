@@ -1,0 +1,32 @@
+package main
+
+func LargestRectangleUnderSkyline(buildings []int) int {
+	// Write your code here.
+	skylineIdxs := []int{}
+	maxArea := 0
+
+	extendedBuildings := append(buildings, 0)
+
+	for idx, height := range extendedBuildings {
+		for len(skylineIdxs) != 0 && buildings[skylineIdxs[len(skylineIdxs)-1]] >= height {
+			var skylineIdx int
+			skylineIdx, skylineIdxs = skylineIdxs[len(skylineIdxs)-1], skylineIdxs[:len(skylineIdxs)-1]
+			skylineHeight := buildings[skylineIdx]
+			width := idx
+			if len(skylineIdxs) != 0 {
+				width = idx - skylineIdxs[len(skylineIdxs)-1] -1
+			}
+			maxArea = max(width*skylineHeight, maxArea)
+
+		}
+		skylineIdxs = append(skylineIdxs, idx)
+	}
+	return maxArea
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	 return b
+}
