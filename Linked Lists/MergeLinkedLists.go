@@ -6,33 +6,23 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
-// O(n + m) time | O(1) space
-func MergeLinkedLists(headOne *LinkedList, headTwo *LinkedList) *LinkedList {
+// O(n + m) time | O(1) space - where n is the length of the first Linked List, and m is the length of the second Linked List
+func MergingLinkedLists(linkedListOne *LinkedList, linkedListTwo *LinkedList) *LinkedList {
 	// Write your code here.
-	p1 := headOne
-	var p1Prev *LinkedList = nil 
-	p2 := headTwo
+	curr1, curr2 := linkedListOne, linkedListTwo
 
-	for p1 != nil && p2 != nil {
-		if p1.Value < p2.Value {
-			p1Prev = p1
-			p1 = p1.Next
+	for curr1 != curr2 {
+		if curr1 == nil {
+			curr1 = linkedListTwo
 		} else {
-			if p1Prev != nil {
-				p1Prev.Next = p2
-			}
-			p1Prev = p2
-			p2 = p2.Next
-			p1Prev.Next = p1
+			curr1 = curr1.Next
+		}
+
+		if curr2 == nil {
+			curr2 = linkedListOne
+		} else {
+			curr2 = curr2.Next
 		}
 	}
-
-	if p1 == nil { // this takes care of the case where the first LL is shoter
-		p1Prev.Next = p2
-	}
-
-	if headOne.Value < headTwo.Value {
-		return headOne
-	}
-	return headTwo
+	return curr1
 }
