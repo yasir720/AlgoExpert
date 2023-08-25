@@ -5,6 +5,7 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
+// O(n) time | O(1) space - where n is the number of nodes in the Linked List
 func ReverseLinkedList(head *LinkedList) *LinkedList {
 	// Write your code here.
 	var prevNode, currentNode *LinkedList = nil, head

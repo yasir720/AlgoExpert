@@ -5,7 +5,7 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
-// O(n) time | O(1) space
+// O(n) time | O(1) space - where n is the number of nodes in the Linked List
 func FindLoop(head *LinkedList) *LinkedList {
 	// Write your code here.
 	first := head.Next

@@ -5,12 +5,12 @@ type LinkedList struct {
 	Next  *LinkedList
 }
 
-// O(n) time | O(1) space
+// O(n) time | O(1) space - where n is the number of nodes in the Linked List
 func RemoveKthNodeFromEnd(head *LinkedList, k int) {
 	// Write your code here.
 	first, second, counter := head, head, 1
 
-	// we move our second pointer k elements AHEAD of the first pointer
+	// we move our second pointer k elements ahead of the first pointer
 	for counter <= k {
 		second = second.Next
 		counter = counter + 1
@@ -20,12 +20,11 @@ func RemoveKthNodeFromEnd(head *LinkedList, k int) {
 	// linked list had k elements in it. This means that first is pointing
 	// to the element to be removed. in this case we remove the head and return
 	if second == nil {
-		head.Value = head.Next.Value
-		head.Next = head.Next.Next
+        *head = *head.Next
 		return
 	}
 
-	// all that is left to do now is to move the two ppinters one by one untill
+	// all that is left to do now is to move the two ppinters by one untill
 	// second is at the end. we then remove first as it is pointing to the
 	// node to be removed
 	for second.Next != nil {
@@ -34,4 +33,5 @@ func RemoveKthNodeFromEnd(head *LinkedList, k int) {
 	}
 
 	first.Next = first.Next.Next
+
 }
