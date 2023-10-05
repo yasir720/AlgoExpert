@@ -1,20 +1,39 @@
 package main
 
-func IsMonotonic(array []int) bool {
-	// Write your code here.
-	if len(array) < 2 {
-		return true
-	}
-
-	isNonincreasing := true
-	isNonDecreasing := true
-
-	for i := 1; i < len(array); i++ {
-		if array[i] > array[i-1] {
-			isNonDecreasing = false
-		} else if array[i] < array[i-1] {
-			isNonincreasing = false
-		}
-	}
-	return isNonincreasing || isNonDecreasing
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+ func levelOrder(root *TreeNode) [][]int {
+    if root == nil {
+        return nil
+    }
+    
+    ans := [][]int{}
+    queue := []*TreeNode{ root }
+    
+    for len(queue) > 0 {
+        tmp := []int{}
+        
+        for _, node := range queue {
+            queue = queue[1:]
+            tmp = append(tmp, node.Val)
+            
+            if node.Left != nil {
+                queue = append(queue, node.Left)
+            }
+            
+            if node.Right != nil {
+                queue = append(queue, node.Right)
+            }
+        }
+        
+        ans = append(ans, tmp)
+    }
+    
+    return ans
 }
